@@ -1,0 +1,272 @@
+
+LAB 1.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         0000000a  00800100  0000016c  000001e0  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         0000016c  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .comment      00000030  00000000  00000000  000001ea  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  0000021c  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000060  00000000  00000000  0000025c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000921  00000000  00000000  000002bc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 000007d5  00000000  00000000  00000bdd  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   000003f7  00000000  00000000  000013b2  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000090  00000000  00000000  000017ac  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    00000419  00000000  00000000  0000183c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    0000012e  00000000  00000000  00001c55  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000040  00000000  00000000  00001d83  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+   8:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+   c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  10:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  14:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  18:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  1c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  20:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  24:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  28:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  2c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  30:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  34:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  38:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  3c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  40:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  44:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  48:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  4c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  50:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  54:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  58:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  5c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  60:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  64:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+  74:	11 e0       	ldi	r17, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	ec e6       	ldi	r30, 0x6C	; 108
+  7c:	f1 e0       	ldi	r31, 0x01	; 1
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+  84:	aa 30       	cpi	r26, 0x0A	; 10
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+  8a:	0e 94 a9 00 	call	0x152	; 0x152 <main>
+  8e:	0c 94 b4 00 	jmp	0x168	; 0x168 <_exit>
+
+00000092 <__bad_interrupt>:
+  92:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000096 <segmentos_init>:
+	0b01101111  // 9
+};
+
+void segmentos_init(void) {
+	// Configurar PD0-PD6 como salidas (display)
+	SEGMENT_DDR = 0b01111111;
+  96:	8f e7       	ldi	r24, 0x7F	; 127
+  98:	8a b9       	out	0x0a, r24	; 10
+	// Mostrar '0' al inicio
+	SEGMENT_PORT = segmentos[0];
+  9a:	8f e3       	ldi	r24, 0x3F	; 63
+  9c:	8b b9       	out	0x0b, r24	; 11
+  9e:	08 95       	ret
+
+000000a0 <mostrar_numero>:
+}
+
+void mostrar_numero(uint8_t numero) {
+	if (numero < 10) {
+  a0:	8a 30       	cpi	r24, 0x0A	; 10
+  a2:	38 f4       	brcc	.+14     	; 0xb2 <mostrar_numero+0x12>
+		SEGMENT_PORT = segmentos[numero];
+  a4:	e8 2f       	mov	r30, r24
+  a6:	f0 e0       	ldi	r31, 0x00	; 0
+  a8:	e0 50       	subi	r30, 0x00	; 0
+  aa:	ff 4f       	sbci	r31, 0xFF	; 255
+  ac:	80 81       	ld	r24, Z
+  ae:	8b b9       	out	0x0b, r24	; 11
+  b0:	08 95       	ret
+		} else {
+		// Si el número no es válido, mostrar nada (todos los segmentos apagados)
+		SEGMENT_PORT = 0b00000000;
+  b2:	1b b8       	out	0x0b, r1	; 11
+  b4:	08 95       	ret
+
+000000b6 <cuenta_regresiva>:
+	}
+}
+
+void cuenta_regresiva(uint8_t inicio) {
+  b6:	cf 93       	push	r28
+  b8:	c8 2f       	mov	r28, r24
+	if (inicio > 9) inicio = 9; // Limitar máximo a 9
+  ba:	8a 30       	cpi	r24, 0x0A	; 10
+  bc:	78 f0       	brcs	.+30     	; 0xdc <cuenta_regresiva+0x26>
+  be:	c9 e0       	ldi	r28, 0x09	; 9
+  c0:	0d c0       	rjmp	.+26     	; 0xdc <cuenta_regresiva+0x26>
+	
+	for (uint8_t i = inicio; i > 0; i--) {
+		mostrar_numero(i);
+  c2:	8c 2f       	mov	r24, r28
+  c4:	0e 94 50 00 	call	0xa0	; 0xa0 <mostrar_numero>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  c8:	2f e7       	ldi	r18, 0x7F	; 127
+  ca:	84 e8       	ldi	r24, 0x84	; 132
+  cc:	9e e1       	ldi	r25, 0x1E	; 30
+  ce:	21 50       	subi	r18, 0x01	; 1
+  d0:	80 40       	sbci	r24, 0x00	; 0
+  d2:	90 40       	sbci	r25, 0x00	; 0
+  d4:	e1 f7       	brne	.-8      	; 0xce <cuenta_regresiva+0x18>
+  d6:	00 c0       	rjmp	.+0      	; 0xd8 <cuenta_regresiva+0x22>
+  d8:	00 00       	nop
+}
+
+void cuenta_regresiva(uint8_t inicio) {
+	if (inicio > 9) inicio = 9; // Limitar máximo a 9
+	
+	for (uint8_t i = inicio; i > 0; i--) {
+  da:	c1 50       	subi	r28, 0x01	; 1
+  dc:	c1 11       	cpse	r28, r1
+  de:	f1 cf       	rjmp	.-30     	; 0xc2 <cuenta_regresiva+0xc>
+		mostrar_numero(i);
+		_delay_ms(10000);
+	}
+	mostrar_numero(0); // Mostrar '0' al finalizar
+  e0:	80 e0       	ldi	r24, 0x00	; 0
+  e2:	0e 94 50 00 	call	0xa0	; 0xa0 <mostrar_numero>
+}
+  e6:	cf 91       	pop	r28
+  e8:	08 95       	ret
+
+000000ea <boton_presionado>:
+
+uint8_t boton_presionado(uint8_t pin_boton) {
+	if (PINC & (1 << pin_boton)) {  // Leemos HIGH cuando está presionado (pull-down)
+  ea:	26 b1       	in	r18, 0x06	; 6
+  ec:	48 2f       	mov	r20, r24
+  ee:	30 e0       	ldi	r19, 0x00	; 0
+  f0:	08 2e       	mov	r0, r24
+  f2:	02 c0       	rjmp	.+4      	; 0xf8 <boton_presionado+0xe>
+  f4:	35 95       	asr	r19
+  f6:	27 95       	ror	r18
+  f8:	0a 94       	dec	r0
+  fa:	e2 f7       	brpl	.-8      	; 0xf4 <boton_presionado+0xa>
+  fc:	20 ff       	sbrs	r18, 0
+  fe:	1c c0       	rjmp	.+56     	; 0x138 <boton_presionado+0x4e>
+ 100:	e3 ed       	ldi	r30, 0xD3	; 211
+ 102:	f0 e3       	ldi	r31, 0x30	; 48
+ 104:	31 97       	sbiw	r30, 0x01	; 1
+ 106:	f1 f7       	brne	.-4      	; 0x104 <boton_presionado+0x1a>
+ 108:	00 c0       	rjmp	.+0      	; 0x10a <boton_presionado+0x20>
+ 10a:	00 00       	nop
+		_delay_ms(50);             // Antirrebote
+		if (PINC & (1 << pin_boton)) {
+ 10c:	26 b1       	in	r18, 0x06	; 6
+ 10e:	30 e0       	ldi	r19, 0x00	; 0
+ 110:	b9 01       	movw	r22, r18
+ 112:	02 c0       	rjmp	.+4      	; 0x118 <boton_presionado+0x2e>
+ 114:	75 95       	asr	r23
+ 116:	67 95       	ror	r22
+ 118:	8a 95       	dec	r24
+ 11a:	e2 f7       	brpl	.-8      	; 0x114 <boton_presionado+0x2a>
+ 11c:	60 ff       	sbrs	r22, 0
+ 11e:	0e c0       	rjmp	.+28     	; 0x13c <boton_presionado+0x52>
+			while (PINC & (1 << pin_boton));  // Esperar a que se suelte el botón
+ 120:	86 b1       	in	r24, 0x06	; 6
+ 122:	90 e0       	ldi	r25, 0x00	; 0
+ 124:	04 2e       	mov	r0, r20
+ 126:	02 c0       	rjmp	.+4      	; 0x12c <boton_presionado+0x42>
+ 128:	95 95       	asr	r25
+ 12a:	87 95       	ror	r24
+ 12c:	0a 94       	dec	r0
+ 12e:	e2 f7       	brpl	.-8      	; 0x128 <boton_presionado+0x3e>
+ 130:	80 fd       	sbrc	r24, 0
+ 132:	f6 cf       	rjmp	.-20     	; 0x120 <boton_presionado+0x36>
+			return 1;
+ 134:	81 e0       	ldi	r24, 0x01	; 1
+ 136:	08 95       	ret
+		}
+	}
+	return 0;
+ 138:	80 e0       	ldi	r24, 0x00	; 0
+ 13a:	08 95       	ret
+ 13c:	80 e0       	ldi	r24, 0x00	; 0
+ 13e:	08 95       	ret
+
+00000140 <setup>:
+#include <avr/io.h>
+#include <util/delay.h>
+#include "7segmentos/7segmentos.h"
+
+void setup() {
+    segmentos_init();
+ 140:	0e 94 4b 00 	call	0x96	; 0x96 <segmentos_init>
+    
+    // Configurar botón de inicio (PC3 como entrada sin pull-up - pull-down externo)
+    DDRC &= ~(1 << PC3);
+ 144:	87 b1       	in	r24, 0x07	; 7
+ 146:	87 7f       	andi	r24, 0xF7	; 247
+ 148:	87 b9       	out	0x07, r24	; 7
+    PORTC &= ~(1 << PC3);  // Desactivar pull-up interno
+ 14a:	88 b1       	in	r24, 0x08	; 8
+ 14c:	87 7f       	andi	r24, 0xF7	; 247
+ 14e:	88 b9       	out	0x08, r24	; 8
+ 150:	08 95       	ret
+
+00000152 <main>:
+}
+
+int main(void) {
+    setup();
+ 152:	0e 94 a0 00 	call	0x140	; 0x140 <setup>
+    
+    while (1) {
+        // Botón de inicio (PC3) inicia la cuenta regresiva desde 5
+        if (boton_presionado(PC3)) {
+ 156:	83 e0       	ldi	r24, 0x03	; 3
+ 158:	0e 94 75 00 	call	0xea	; 0xea <boton_presionado>
+ 15c:	88 23       	and	r24, r24
+ 15e:	d9 f3       	breq	.-10     	; 0x156 <main+0x4>
+            cuenta_regresiva(5);
+ 160:	85 e0       	ldi	r24, 0x05	; 5
+ 162:	0e 94 5b 00 	call	0xb6	; 0xb6 <cuenta_regresiva>
+ 166:	f7 cf       	rjmp	.-18     	; 0x156 <main+0x4>
+
+00000168 <_exit>:
+ 168:	f8 94       	cli
+
+0000016a <__stop_program>:
+ 16a:	ff cf       	rjmp	.-2      	; 0x16a <__stop_program>
